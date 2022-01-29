@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://level/geometry_spawner.gd" type="Script" id=3]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="GeometrySpawner" type="Node2D" parent="."]
+script = ExtResource( 3 )
+line_count = 3
+bounds = Rect2( 0, 0, 1024, 600 )
+line_length_bounds = Vector2( 240, 360 )
+
+[node name="Lines" type="Node2D" parent="GeometrySpawner"]
+
+[node name="Circles" type="Node2D" parent="GeometrySpawner"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1.0
+margin_right = 13.0
+margin_bottom = 20.0
+text = "Spawn Lines"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="GeometrySpawner" method="_on_Button_pressed"]
