@@ -14,10 +14,19 @@ func _process(delta: float):
 	
 func handle_input():
 	if Input.is_action_just_pressed("player_done"):
+		var fsc = $"../FullScreenCamera"
+		var p = $"../Player"
+		var pc = p.get_node("PlayerCamera")
+		
 		is_fullscreen = !is_fullscreen
 		
-		$"../FullScreenCamera".current = is_fullscreen
-		$"../Player/PlayerCamera".current = !is_fullscreen
+		if is_fullscreen:
+			fsc.pan_from(p.position + pc.offset, pc.zoom)
+		else:
+			pc.pan_from(p.transform.inverse() * fsc.position - pc.offset.rotated(-p.transform.get_rotation()), fsc.zoom)
 		
-		$"../Player".is_active = !is_fullscreen
-		$"../Player".visible = !is_fullscreen
+		fsc.current = is_fullscreen
+		pc.current = !is_fullscreen
+		
+		p.is_active = !is_fullscreen
+		p.visible = !is_fullscreen
