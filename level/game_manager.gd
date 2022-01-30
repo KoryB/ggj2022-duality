@@ -1,6 +1,8 @@
 class_name GameManager
 extends Node
 
+const StickerLevel := preload("res://sticker/sticker_level.tscn")
+
 var is_fullscreen := false
 
 
@@ -30,3 +32,7 @@ func handle_input():
 		
 		p.is_active = !is_fullscreen
 		p.visible = !is_fullscreen
+		
+	if is_fullscreen and Input.is_action_just_pressed("screenshot_time"):
+		PictureManager.take_screenshot()
+		get_tree().change_scene_to(StickerLevel)

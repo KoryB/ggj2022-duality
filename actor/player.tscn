@@ -7,6 +7,8 @@
 script = ExtResource( 1 )
 radius = 20.0
 line_width = 5.0
+circle_color = Color( 0.960784, 0.960784, 0.960784, 0 )
+line_color = Color( 0.843137, 0.886275, 0.054902, 0.768627 )
 movement_speed = 100.0
 rotation_speed_degrees = 80.0
 movement_acceleration_time = 0.5

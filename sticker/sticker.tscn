@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/stickers/stickers.png" type="Texture" id=1]
+[ext_resource path="res://sticker/sticker.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 64 )
+
+[node name="Sticker" type="Sprite"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+offset = Vector2( 10, 0 )
+hframes = 5
+region_rect = Rect2( 0, 0, 128, 128 )
+script = ExtResource( 2 )
+
+[node name="ClickRegion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickRegion"]
+position = Vector2( 10, 0 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0.117647 )
+polygon = PoolVector2Array( -54, -63, 73, -63, 74, 64, -54, 64 )
+
+[connection signal="input_event" from="ClickRegion" to="." method="_on_ClickRegion_input_event"]
+[connection signal="mouse_exited" from="ClickRegion" to="." method="_on_ClickRegion_mouse_exited"]

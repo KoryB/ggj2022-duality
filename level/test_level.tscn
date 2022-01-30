@@ -1,21 +1,38 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actor/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/game_manager.gd" type="Script" id=2]
 [ext_resource path="res://level/geometry_spawner.gd" type="Script" id=3]
 [ext_resource path="res://level/full_screen_camera.gd" type="Script" id=4]
 [ext_resource path="res://level/player_camera.gd" type="Script" id=5]
+[ext_resource path="res://geometry/polygon/square.tscn" type="PackedScene" id=6]
+[ext_resource path="res://geometry/line.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
-glow_enabled = true
-glow_intensity = 4.1
-glow_strength = 1.18
+glow_intensity = 1.02
+glow_strength = 1.21
 glow_bloom = 0.05
-glow_blend_mode = 3
+glow_blend_mode = 1
+glow_hdr_threshold = 0.35
+glow_hdr_scale = 3.59
+glow_bicubic_upscale = true
 glow_high_quality = true
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Postprocesser" type="Node" parent="."]
+
+[node name="GeometrySpawner" type="Node2D" parent="."]
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Lines" type="Node2D" parent="GeometrySpawner"]
+
+[node name="Circles" type="Node2D" parent="GeometrySpawner"]
 
 [node name="FullScreenCamera" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
@@ -26,13 +43,58 @@ script = ExtResource( 4 )
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="GeometrySpawner" type="Node" parent="."]
-script = ExtResource( 3 )
-player_path = NodePath("../Player")
+[node name="BackgroundPolygons" type="Node2D" parent="."]
 
-[node name="Lines" type="Node2D" parent="GeometrySpawner"]
+[node name="Square" parent="BackgroundPolygons" instance=ExtResource( 6 )]
+position = Vector2( 1199, 632 )
+rotation = -2.85935
 
-[node name="Circles" type="Node2D" parent="GeometrySpawner"]
+[node name="Square2" parent="BackgroundPolygons" instance=ExtResource( 6 )]
+position = Vector2( 1199, 632 )
+
+[node name="Chevron" type="Node2D" parent="BackgroundPolygons"]
+position = Vector2( 159, 139 )
+
+[node name="Line" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line" index="1"]
+position = Vector2( 114, -67 )
+
+[node name="Line2" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 114, -67 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line2" index="1"]
+position = Vector2( 110, 67 )
+
+[node name="Line3" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 0, 136 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line3" index="1"]
+position = Vector2( 114, -67 )
+
+[node name="Line4" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 114, 69 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line4" index="1"]
+position = Vector2( 110, 67 )
+
+[node name="Line5" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 0, 67 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line5" index="1"]
+position = Vector2( 114, -67 )
+
+[node name="Line6" parent="BackgroundPolygons/Chevron" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+position = Vector2( 114, 0 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Chevron/Line6" index="1"]
+position = Vector2( 110, 67 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 951, 857 )
@@ -45,9 +107,11 @@ script = ExtResource( 5 )
 
 [node name="Tween" type="Tween" parent="Player/PlayerCamera"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
-
-[node name="Tween" type="Tween" parent="."]
-
 [connection signal="player_turned" from="Player" to="GeometrySpawner" method="_on_Player_player_turned"]
+
+[editable path="BackgroundPolygons/Chevron/Line"]
+[editable path="BackgroundPolygons/Chevron/Line2"]
+[editable path="BackgroundPolygons/Chevron/Line3"]
+[editable path="BackgroundPolygons/Chevron/Line4"]
+[editable path="BackgroundPolygons/Chevron/Line5"]
+[editable path="BackgroundPolygons/Chevron/Line6"]

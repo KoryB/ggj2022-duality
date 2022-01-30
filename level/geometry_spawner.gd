@@ -1,5 +1,5 @@
 class_name GeometrySpawner
-extends Node
+extends Node2D
 
 const LineScene := preload("res://geometry/line.tscn")
 const CircleScene := preload("res://geometry/circle.tscn")
