@@ -96,6 +96,124 @@ position = Vector2( 114, 0 )
 [node name="EndPoint" parent="BackgroundPolygons/Chevron/Line6" index="1"]
 position = Vector2( 110, 67 )
 
+[node name="Triangle" type="Node2D" parent="BackgroundPolygons"]
+position = Vector2( 144, 864 )
+rotation = 0.424129
+
+[node name="Line" parent="BackgroundPolygons/Triangle" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle/Line" index="1"]
+position = Vector2( -3.41959, 143.085 )
+
+[node name="Line2" parent="BackgroundPolygons/Triangle" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle/Line2" index="1"]
+position = Vector2( 113.239, 90.4094 )
+
+[node name="Line3" parent="BackgroundPolygons/Triangle" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+position = Vector2( -3.41962, 143.085 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle/Line3" index="1"]
+position = Vector2( 116.659, -52.6755 )
+
+[node name="Triangle2" type="Node2D" parent="BackgroundPolygons"]
+position = Vector2( 832, 656 )
+rotation = 0.424129
+
+[node name="Line" parent="BackgroundPolygons/Triangle2" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle2/Line" index="1"]
+position = Vector2( -180.401, 125.346 )
+
+[node name="Line2" parent="BackgroundPolygons/Triangle2" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle2/Line2" index="1"]
+position = Vector2( 111.005, 90.321 )
+
+[node name="Line3" parent="BackgroundPolygons/Triangle2" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.678431 )
+position = Vector2( -180.401, 125.346 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Triangle2/Line3" index="1"]
+position = Vector2( 291.406, -35.0247 )
+
+[node name="Pentagon" type="Node2D" parent="BackgroundPolygons"]
+position = Vector2( 1096, 88 )
+
+[node name="Line" parent="BackgroundPolygons/Pentagon" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.466667 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Pentagon/Line" index="1"]
+position = Vector2( 103, 0 )
+
+[node name="Line2" parent="BackgroundPolygons/Pentagon" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.466667 )
+rotation = 1.88496
+
+[node name="EndPoint" parent="BackgroundPolygons/Pentagon/Line2" index="1"]
+position = Vector2( 103, 0 )
+
+[node name="Line3" parent="BackgroundPolygons/Pentagon" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 52, 158 )
+rotation = 3.76991
+
+[node name="EndPoint" parent="BackgroundPolygons/Pentagon/Line3" index="1"]
+position = Vector2( 103, 0 )
+
+[node name="Line4" parent="BackgroundPolygons/Pentagon" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 52, 158 )
+rotation = 5.65487
+
+[node name="EndPoint" parent="BackgroundPolygons/Pentagon/Line4" index="1"]
+position = Vector2( 103, 0 )
+
+[node name="Line5" parent="BackgroundPolygons/Pentagon" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 103, 0 )
+rotation = 7.53982
+
+[node name="EndPoint" parent="BackgroundPolygons/Pentagon/Line5" index="1"]
+position = Vector2( 103, 0 )
+
+[node name="Trapezoid" type="Node2D" parent="BackgroundPolygons"]
+position = Vector2( 1064, 185 )
+
+[node name="Line" parent="BackgroundPolygons/Trapezoid" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.380392 )
+
+[node name="EndPoint" parent="BackgroundPolygons/Trapezoid/Line" index="1"]
+position = Vector2( 85, 61 )
+
+[node name="Line3" parent="BackgroundPolygons/Trapezoid" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.494118 )
+position = Vector2( 53, 161 )
+rotation = -1.88496
+
+[node name="EndPoint" parent="BackgroundPolygons/Trapezoid/Line3" index="1"]
+position = Vector2( 85, 61 )
+
+[node name="Line2" parent="BackgroundPolygons/Trapezoid" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.494118 )
+rotation = 1.88496
+
+[node name="EndPoint" parent="BackgroundPolygons/Trapezoid/Line2" index="1"]
+position = Vector2( 85, 61 )
+
+[node name="Line4" parent="BackgroundPolygons/Trapezoid" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 1, 1, 0.494118 )
+position = Vector2( -84, 64 )
+rotation = 1.88496
+
+[node name="EndPoint" parent="BackgroundPolygons/Trapezoid/Line4" index="1"]
+position = Vector2( 49.9171, -160.269 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 951, 857 )
 
@@ -115,3 +233,18 @@ script = ExtResource( 5 )
 [editable path="BackgroundPolygons/Chevron/Line4"]
 [editable path="BackgroundPolygons/Chevron/Line5"]
 [editable path="BackgroundPolygons/Chevron/Line6"]
+[editable path="BackgroundPolygons/Triangle/Line"]
+[editable path="BackgroundPolygons/Triangle/Line2"]
+[editable path="BackgroundPolygons/Triangle/Line3"]
+[editable path="BackgroundPolygons/Triangle2/Line"]
+[editable path="BackgroundPolygons/Triangle2/Line2"]
+[editable path="BackgroundPolygons/Triangle2/Line3"]
+[editable path="BackgroundPolygons/Pentagon/Line"]
+[editable path="BackgroundPolygons/Pentagon/Line2"]
+[editable path="BackgroundPolygons/Pentagon/Line3"]
+[editable path="BackgroundPolygons/Pentagon/Line4"]
+[editable path="BackgroundPolygons/Pentagon/Line5"]
+[editable path="BackgroundPolygons/Trapezoid/Line"]
+[editable path="BackgroundPolygons/Trapezoid/Line3"]
+[editable path="BackgroundPolygons/Trapezoid/Line2"]
+[editable path="BackgroundPolygons/Trapezoid/Line4"]
