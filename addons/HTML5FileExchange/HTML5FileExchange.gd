@@ -109,9 +109,12 @@ func load_image()->Image:
 
 
 func save_image(image:Image, fileName:String = "export")->void:
+	var start_time = OS.get_ticks_msec();
+	
 	if OS.get_name() != "HTML5" or !OS.has_feature('JavaScript'):
 		return
 		
+	
 	image.clear_mipmaps()
 	if image.save_png("user://export_temp.png"):
 		#label.text = "Error saving temp file"
@@ -124,5 +127,8 @@ func save_image(image:Image, fileName:String = "export")->void:
 	file.close()
 	var dir = Directory.new()
 	dir.remove("user://export_temp.png")
-	JavaScript.eval("download('%s', %s);" % [fileName, str(pngData)], true)
+	
+	JavaScript.download_buffer(pngData, "your_lovely_creation.png", "image/png")
+	
+	# JavaScript.eval("download('%s', %s);" % [fileName, str(pngData)], true)
 	#label.text = "Saving DONE"

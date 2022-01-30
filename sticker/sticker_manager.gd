@@ -2,6 +2,9 @@ class_name StickerManager
 extends Node
 
 
+
+
+
 var screenshot: Image
 
 var is_selected := false
@@ -14,6 +17,8 @@ func _process(delta: float):
 		
 		if OS.get_name() == "HTML5" and OS.has_feature('JavaScript'):
 			HTML5File.save_image(screenshot, "your_lovely_creation.png")
+			$TextureButton.show()
+			
 			
 		else:
 			# Just in case.........
@@ -25,6 +30,7 @@ func _process(delta: float):
 
 func _on_FileDialog_file_selected(path):
 	save_screenshot_native(path)
+	$TextureButton.show()
 	$FileDialog.hide()
 		
 		
@@ -39,3 +45,8 @@ func save_screenshot_html5():
 
 func save_screenshot_native(path):
 	screenshot.save_png(path)
+
+
+func _on_TextureButton_pressed():
+	var TitleScene = load("res://title/title_level.tscn")
+	get_tree().change_scene_to(TitleScene)
