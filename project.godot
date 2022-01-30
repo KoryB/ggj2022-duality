@@ -12,9 +12,19 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Circle",
 "language": "GDScript",
-"path": "res://actor/geometry/circle.gd"
+"path": "res://geometry/circle.gd"
 }, {
-"base": "Node2D",
+"base": "Camera2D",
+"class": "FullScreenCamera",
+"language": "GDScript",
+"path": "res://level/full_screen_camera.gd"
+}, {
+"base": "Node",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://level/game_manager.gd"
+}, {
+"base": "Node",
 "class": "GeometrySpawner",
 "language": "GDScript",
 "path": "res://level/geometry_spawner.gd"
@@ -22,12 +32,20 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Line",
 "language": "GDScript",
-"path": "res://actor/geometry/line.gd"
+"path": "res://geometry/line.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://actor/player.gd"
 } ]
 _global_script_class_icons={
 "Circle": "",
+"FullScreenCamera": "",
+"GameManager": "",
 "GeometrySpawner": "",
-"Line": ""
+"Line": "",
+"Player": ""
 }
 
 [application]
@@ -35,6 +53,40 @@ _global_script_class_icons={
 config/name="2022 - Duality"
 run/main_scene="res://level/test_level.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
+
+[input]
+
+player_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_go_go={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_done={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_stop={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 

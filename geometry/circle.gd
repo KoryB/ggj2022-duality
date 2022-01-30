@@ -20,20 +20,25 @@ var radius: float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	color = line.color
-	radius = get_radius_from_line() * radius_ratio
-	
-	var c = get_center_from_line()
-	var offset = get_unit_offset_from_line() * offset_size * radius
-	position = c + offset
+	sync_with_line()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	sync_with_line()
 	update()
 	
 
 func _draw():	
 	draw_arc(Vector2(), radius, 0, 2 * PI, ARC_POINT_COUNT, color, width, true)
+	
+	
+func sync_with_line():
+	radius = get_radius_from_line() * radius_ratio
+	
+	var c = get_center_from_line()
+	var offset = get_unit_offset_from_line() * offset_size * radius
+	position = c + offset
 	
 	
 func get_center_from_line() -> Vector2:

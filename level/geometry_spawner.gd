@@ -1,72 +1,62 @@
 class_name GeometrySpawner
-extends Node2D
+extends Node
 
-const LineScene := preload("res://actor/geometry/line.tscn")
-const CircleScene := preload("res://actor/geometry/circle.tscn")
+const LineScene := preload("res://geometry/line.tscn")
+const CircleScene := preload("res://geometry/circle.tscn")
 
-export var line_count: int
-export var bounds: Rect2
-export var line_length_bounds: Vector2
+export var player_path: NodePath
+onready var player: Player = get_node(player_path)
+
+var player_line: Line
+var player_circle: Circle
 
 func _ready():
-	randomize()
-	add_children()
+	player_line = spawn_player_line()
+	player_circle = spawn_player_circle(player_line)
 	
 	
-func add_children():
-	remove_children()
-	
-	var a = get_random_point()
-	for i in range(line_count):
-		var b = get_random_point_from(a)
-		
-		var line = add_line_child(a, b)
-		var circle = add_circle_child(line)
-		a = b
-		
-func remove_children():
-	for c in get_children():
-		c.queue_free()
+func _process(delta: float):
+	player_line.set_end_point(player.position)
 
 
-func add_line_child(start_point: Vector2, end_point: Vector2):
+func create_line(start_position: Vector2) -> Line:
 	var line = LineScene.instance()
+	line.set_start_point(start_position)
 	
-	line.set_start_point(start_point)
-	line.set_end_point(end_point)
+	return line
+	
+
+func spawn_player_line() -> Line:
+	var line = create_line(player.position)
+	line.set_end_point(player.position)
 	add_child(line)
 	
 	return line
 	
-	
-func add_circle_child(line: Line):
-	var line_path = line.get_path()
+
+func create_circle(line: Line) -> Circle:
 	var circle = CircleScene.instance()
-	
-	circle.line_path = line_path
-	add_child(circle)
+	circle.line_path = line.get_path()
 	
 	return circle
 	
 
-func get_random_point() -> Vector2:
-	return bounds.position + Vector2(randf(), randf()) * bounds.size
-
-
-func get_random_point_from(from: Vector2) -> Vector2:
-	while true:
-		var angle = randf() * 2 * PI
-		var length = rand_range(line_length_bounds.x, line_length_bounds.y)
-		var offset = Vector2(cos(angle), -sin(angle)) * length
-		
-		var to = from + offset
-		
-		if bounds.has_point(to):
-			return to
-			
-	return Vector2()
+func spawn_player_circle(line: Line) -> Circle:
+	var circle = create_circle(line)
+	add_child(circle)
 	
+	return circle
 
 
-func _on_Button_pressed():
-	add_children()
+func _on_Player_player_turned():
+	remove_child(player_line)
+	remove_child(player_circle)
+	
+	$Lines.add_child(player_line)
+	$Circles.add_child(player_circle)
+	
+	player_circle.line_path = player_line.get_path()
+	
+	player_line = spawn_player_line()
+	player_circle = spawn_player_circle(player_line)
+	

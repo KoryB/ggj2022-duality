@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actor/player.gd" type="Script" id=1]
+[ext_resource path="res://actor/player_editor_sprite.png" type="Texture" id=2]
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+radius = 20.0
+line_width = 5.0
+movement_speed = 100.0
+rotation_speed_degrees = 80.0
+movement_acceleration_time = 0.5
+rotation_acceleration_time = 0.25
+movement_deceleration_time = 0.5
+rotation_deceleration_time = 0.75
+
+[node name="EditorSprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )

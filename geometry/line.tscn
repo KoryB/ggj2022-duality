@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://actor/geometry/line.gd" type="Script" id=1]
+[ext_resource path="res://geometry/line.gd" type="Script" id=1]
 [ext_resource path="res://resources/pastel_palette.tres" type="Gradient" id=2]
+[ext_resource path="res://resources/circle_line_material.tres" type="Material" id=3]
 
 [node name="Line" type="Node2D"]
+material = ExtResource( 3 )
 script = ExtResource( 1 )
-width = 10.0
-cap_radius = 15.0
+width = 8.0
+cap_radius = 10.0
 color_palette = ExtResource( 2 )
 cap_alpha_multiplier = 0.8
 
