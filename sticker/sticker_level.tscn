@@ -15,10 +15,10 @@ margin_right = 448.0
 margin_bottom = 288.0
 rect_min_size = Vector2( 250, 87.5 )
 window_title = "Save your creation!!!"
-access = 2
+access = 1
 filters = PoolStringArray( "*.png; PNG Images" )
-current_dir = "/home/korygd/Game Development/Games/Global Game Jam/2022 - Duality"
-current_path = "/home/korygd/Game Development/Games/Global Game Jam/2022 - Duality/"
+current_dir = "user://home/korygd/Game Development/Games/Global Game Jam/2022 - Duality"
+current_path = "user://home/korygd/Game Development/Games/Global Game Jam/2022 - Duality/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
