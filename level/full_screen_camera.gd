@@ -6,10 +6,23 @@ export var zoom_time := 0.25
 
 var target_zoom: float
 
+var is_glow := false
+
 
 func _process(delta: float):
-	pass
+	handle_input()
+	handle_postprocess()
 	
+
+func handle_input():
+	if current:
+		if Input.is_action_just_pressed("postprocess_glow"):
+			is_glow = !is_glow
+			
+			
+func handle_postprocess():
+	$"../WorldEnvironment".get_environment().glow_enabled = current and is_glow
+
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(BUTTON_LEFT):
